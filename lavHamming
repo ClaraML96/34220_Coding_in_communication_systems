@@ -1,0 +1,19 @@
+%% Jakobs kode
+
+clear all
+
+for m=2:4 %2:8
+    k=2^m-1-m;
+    count=1;
+    A=zeros(k,m);
+    for i=2^m-1:-1:3
+        tmp = de2bi(i,m,'left-msb');
+        if sum(tmp) > 1
+            A(count,:)=tmp;
+            count=count+1;
+        end 
+    end
+    
+    H=[A; eye(m)]
+    G=[eye(k), A]
+end
