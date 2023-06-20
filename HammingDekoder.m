@@ -19,7 +19,7 @@ for i=1:N
 end   
 
 %s=y*H
-%samlign med syndrom tabel for 1 fejl
+%sammenlign med syndrom tabel for 1 fejl
 s=mod(y*H,2);
 index=polyval(s,2)+1;
 c=mod(y+ST(index,:),2);
