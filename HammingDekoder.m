@@ -23,3 +23,4 @@ end
 s=mod(y*H,2);
 index=polyval(s,2)+1;
 c=mod(y+ST(index,:),2);
+%x=c(1,1:K)
