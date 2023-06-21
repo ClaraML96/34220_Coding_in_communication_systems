@@ -64,7 +64,7 @@ dec=all(all(x == x2))
 %% Produktkode decode iterations 
 temp=zeros(N,N);
 count=0;
-while (all(all(P == y)))==0 && count<3 %% køre max 3 gange %x==y(1:K,1:K)
+while (all(all(P == y)))==0 && count<3 %% køre max 3 gange 
     %række
     for i=1:N
     %     y=P(i,:); %uden støj
