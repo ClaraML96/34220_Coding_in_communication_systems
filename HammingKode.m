@@ -4,11 +4,10 @@
 
 %Hamming enkoder 
 %N er antal bit K er infromations bit 
-% Hamming (N,K) %encode realtion mellem N og K
-
-N=7;
-K=4;
-m=N-K;
+% Hamming (N,K)
+m=3; %7=127 bit
+N=2^m-1;
+K=N-m;
 
 %%informations bits 
 x=zeros(K);
