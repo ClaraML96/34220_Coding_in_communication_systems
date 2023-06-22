@@ -1,6 +1,6 @@
 %% Projekt
 % Produktkoder med koder og dekoder for Hamming koder
-% Christian Schaumburg Jacobsen, Clara Mejlhede Lorenzen, Jana Jankovic
+% Christian Schaumburg Jakobsen, Clara Mejlhede Lorenzen, Jana Jankovic
 
 %Hamming enkoder 
 %N er antal bit K er infromations bit 
