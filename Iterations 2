@@ -1,0 +1,91 @@
+%% Iterationer final
+samletBER=zeros(10,10);
+sBER=zeros(1,10,'double');
+ps=zeros(1,10,'double');
+for o=1:10
+    for l=1:10
+        BER=0;
+            p=0.005*l; %p<0.005
+            e=rand(N,N)<p;
+            error=sum(e(:)==1);
+            y=mod(P+e,2);
+        for k=1:10
+            % Produktkode decode iterations 
+            temp=zeros(N,N);
+            count=0;
+            while count<o %% køre max 3 gange %x==y(1:K,1:K) %%(all(all(P == y)))==0 &&
+                %række
+                for i=1:N
+                    s=mod(y(i,:)*H,2);
+                    index=polyval(s,2)+1;
+                    c=mod(y(i,:)+ST(index,:),2);
+                    temp(i,:)=c(1,:);
+                end
+                %søjle
+                x2=zeros(N);
+                temp=temp';
+                for i=1:N
+                    s=mod(temp(i,:)*H,2);
+                    index=polyval(s,2)+1;
+                    c=mod(temp(i,:)+ST(index,:),2);
+                    x2(i,:)=c(1,:);
+                end
+                x2=x2';
+                y=x2;
+                %tjek
+                %all(all(x == x2(1:K,1:K)))
+                count=count+1;
+            end
+        end
+        BER=(BER+((N*N)-sum(sum(P==y)))/(N*N))/k;
+        sBER(l)=BER;
+        ps(l)=p;
+    end
+    samletBER(o,:)=sBER
+end
+%%
+
+it1=samletBER(1,:)
+it2=samletBER(2,:)
+it3=samletBER(3,:)
+it4=samletBER(4,:)
+it5=samletBER(5,:)
+it6=samletBER(6,:)
+it7=samletBER(7,:)
+it8=samletBER(8,:)
+it9=samletBER(9,:)
+it10=samletBER(10,:)
+
+semilogy(ps,it1,".-r")
+grid on
+xlabel("p")
+ylabel("BER")
+hold on
+
+semilogy(ps,it2,".-g")
+hold on
+
+semilogy(ps,it3,".-b")
+hold on
+
+semilogy(ps,it4,".-c")
+hold on
+
+semilogy(ps,it5,".-m")
+hold on
+
+semilogy(ps,it6,".-y")
+hold on
+
+semilogy(ps,it7,".-k")
+hold on
+
+semilogy(ps,it8,"*-r")
+hold on
+
+semilogy(ps,it9,"*-g")
+hold on
+
+semilogy(ps,it10,"*-b")
+legend("1 iteration", "2 iteration", "3 iteration", "4 iteration", "5 iteration", "6 iteration", "7 iteration", "8 iteration", "9 iteration", "10 iteration")
+hold on
