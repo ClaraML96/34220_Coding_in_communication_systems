@@ -5,7 +5,7 @@ ps=zeros(1,10,'double');
 for o=1:10
     for l=1:10
         BER=0;
-            p=0.005*l; %p<0.005
+            p=0.005*l; % gange lille L
             e=rand(N,N)<p;
             error=sum(e(:)==1);
             y=mod(P+e,2);
@@ -13,7 +13,7 @@ for o=1:10
             % Produktkode decode iterations 
             temp=zeros(N,N);
             count=0;
-            while count<o %% køre max 3 gange %x==y(1:K,1:K) %%(all(all(P == y)))==0 &&
+            while count<o  % mindre end "O"
                 %række
                 for i=1:N
                     s=mod(y(i,:)*H,2);
@@ -32,8 +32,6 @@ for o=1:10
                 end
                 x2=x2';
                 y=x2;
-                %tjek
-                %all(all(x == x2(1:K,1:K)))
                 count=count+1;
             end
         end
@@ -44,17 +42,16 @@ for o=1:10
     samletBER(o,:)=sBER
 end
 %%
-
-it1=samletBER(1,:)
-it2=samletBER(2,:)
-it3=samletBER(3,:)
-it4=samletBER(4,:)
-it5=samletBER(5,:)
-it6=samletBER(6,:)
-it7=samletBER(7,:)
-it8=samletBER(8,:)
-it9=samletBER(9,:)
-it10=samletBER(10,:)
+it1=samletBER(1,:);
+it2=samletBER(2,:);
+it3=samletBER(3,:);
+it4=samletBER(4,:);
+it5=samletBER(5,:);
+it6=samletBER(6,:);
+it7=samletBER(7,:);
+it8=samletBER(8,:);
+it9=samletBER(9,:);
+it10=samletBER(10,:);
 
 semilogy(ps,it1,".-r")
 grid on
